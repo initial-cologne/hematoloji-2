@@ -7,8 +7,8 @@ from io import BytesIO
 
 # --- Sayfa Yapılandırması ---
 st.set_page_config(page_title="Hematoloji Analiz", page_icon="🔬")
-st.title("🔬 Dijital Hematoloji Analiz Sistemi")
-st.write("Görüntüyü bilgisayarınızdan yükleyebilir veya bir web URL'si girebilirsiniz.")
+st.title("Hematolojik Analiz Arayüzü")
+st.write("Lökosit grubu hücrelere ait görüntüyü bilgisayarınızdan yükleyebilir veya bir web URL'si girebilirsiniz.")
 
 # --- Model Hazırlığı ---
 siniflar = ['Basophil', 'Eosinophil', 'Lymphocyte', 'Monocyte', 'Neutrophil']
@@ -53,7 +53,7 @@ with sekme2:
 if goruntu is not None:
     st.image(goruntu, caption='Analiz Edilen Hücre', use_container_width=True)
 
-    with st.spinner('Yapay zeka morfolojiyi inceliyor...'):
+    with st.spinner('morfoloji inceleniyor...'):
         input_tensor = donusum(goruntu).unsqueeze(0)
         with torch.no_grad():
             ciktilar = model(input_tensor)
